@@ -1,5 +1,47 @@
-export default function Create (){
+import { useState } from "react";
+
+function Create (){
+
+    const [title, setTitle] = useState('');
+    const [year, setYear] = useState('');
+    const [poster, setPoster] = useState('');
+    const [imdbID, setImdbID] = useState('');
+    const [type, setType] = useState('');
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(title, year, poster, imdbID, type );
+    }
+
     return (
-        <h3>Hello from the Create component</h3>
-    )
+
+        <div>
+            <h2>This is my Create Component. </h2>
+            <form onSubmit={handleSubmit}>
+                <div className="form-group">
+                    <label> Add Movie Title: </label>
+                    <input type="text" className="form-control" value = {title} onChange={(e) => setTitle(e.target.value)}/>
+                </div>
+
+                <div className="form-group">
+                    <label> Add Movie Year: </label>
+                    <input type="text" className="form-control" value = {year} onChange={(e) => setYear(e.target.value)}/>
+                </div>
+
+                <div className="form-group">
+                    <label> Add Movie Poster: </label>
+                    <input type="text" className="form-control" value = {poster} onChange={(e) => setPoster(e.target.value)}/>
+                </div>
+
+                <br></br>
+
+                <input type="submit" value="Add Movie"></input>
+            
+            </form>
+        </div>
+        
+        
+    );
 }
+
+export default Create;
