@@ -1,4 +1,5 @@
 import { useState } from "react"; // import usestate function to let us use the state in the component
+import axios from "axios"; // import axios to let us post the array to the link
 
 function Create (){
 
@@ -8,9 +9,19 @@ function Create (){
     
     
 
-    const handleSubmit = (e) => { // function called when you submit the form below
+    const handleSubmit = (e) => { // function called when you submit the form below 
         e.preventDefault();
-        console.log(title, year, poster, imdbID, type ); // when called, the function will print the inputted values for title, year, and poster
+        console.log(`Title: ${title}, Year: ${year}, Poster ${poster}`); // print the values of the title, year, and poster to the console
+        
+        const movie = { // create a variable to hold the values of the submitted form and set the values to the variables above
+            title: title,
+            year: year,
+            poster: poster
+        }
+
+        axios.post('http://localhost:4000/api/movies', movie) // input the specific link where the array is being stored and post the array to it
+             .then((res) => {console.log(res.data)}) 
+             .catch((err) => {console.log(err)}); // log an error if it appears
     }
 
     return (

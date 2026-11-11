@@ -7,10 +7,10 @@ function Read() {
   const [myMovies, setMovies] = useState([]); // create variables for the virtual array and a variable for the function to set the array
 
   useEffect(() => { // use this function to get the array from the link and set it to the virtual array
-    axios.get('https://data-rep-mern-application.github.io/dataserver/movies.json') // input the specific link where the array is being stored and get the array from it
+    axios.get('http://localhost:4000/api/movies') // input the specific link where the array is being stored and get the array from it
       .then((response) => {
-        console.log(response.data.myArray); // log the array to the console
-        setMovies(response.data.myArray); // set the virtual array to the array that was gotten from the link
+        console.log(response.data.movies); // log the array to the console
+        setMovies(response.data.movies); // set the virtual array to the array that was gotten from the link
       })
       .catch((error) => {
         console.log(error); // log error
